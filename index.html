@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>WordPress Posts</h2>
+<div id="posts"></div>
+
+<script>
+fetch('http://localhost/wordpress/wp-json/wp/v2/posts')
+.then(res => res.json())
+.then(data => {
+    let output = "";
+    data.forEach(post => {
+        output += "<h3>" + post.title.rendered + "</h3>";
+    });
+    document.getElementById("posts").innerHTML = output;
+});
+</script>
+</body>
+</html>
